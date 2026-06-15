@@ -6,10 +6,10 @@
 
 ```
 STM32_ClionProject/
-├── .gitignore
-├── README.md
-├── AGENTS.md
 ├── STM32Test_Project_1/
+│   ├── .gitignore
+│   ├── README.md
+│   ├── AGENTS.md
 │   ├── CMakeLists.txt
 │   ├── CMakePresets.json
 │   ├── cmake/
@@ -42,7 +42,7 @@ cmake --build build/Debug
 1. `ProjectManager.KeepUserCode=true` — 用户代码在 `/* USER CODE BEGIN/END */` 间保留
 2. 手动维护的文件在顶层 `CMakeLists.txt` 的 `target_sources` 中（ALIENTEK BSP/SYSTEM, DHT22）
 3. 旧 `Drivers/SYSTEM/usart/usart.c` 中的冲突函数已用 `#if 0` 屏蔽
-4. CLion profile 必须清空 C/C++ Compiler，通过 `-DCMAKE_TOOLCHAIN_FILE` 引入工具链
+4. CLion profile: C/C++ Compiler 指向 STM32CubeCLT 的 arm-none-eabi-gcc/g++，CMake options 加 `-DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake`
 
 ## FreeRTOS
 

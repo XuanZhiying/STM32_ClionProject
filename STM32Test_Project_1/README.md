@@ -1,6 +1,6 @@
-# STM32 ClionProject
+# STM32Test_Project_1
 
-基于 CLion + CMake + Ninja + arm-none-eabi-gcc 的 STM32 开发仓库，使用 STM32CubeMX 生成初始化代码。
+STM32F103C8T6 + FreeRTOS + DHT22 温湿度传感器，USART1 串口打印。
 
 ## 环境
 
@@ -12,26 +12,23 @@
 | CubeMX | 6.17.0 |
 | HAL 库 | STM32Cube FW_F1 V1.8.7 |
 
-## 项目列表
-
-| 项目 | 芯片 | RTOS | 说明 |
-|------|------|------|------|
-| [STM32Test_Project_1](STM32Test_Project_1/) | STM32F103C8T6 | FreeRTOS CMSIS-RTOS v1 | DHT22 温湿度传感器 + USART1 串口打印 |
-
 ## 构建
 
-每个子项目独立构建：
-
 ```bash
-cd STM32Test_Project_1
 cmake --preset Debug
 cmake --build build/Debug
 ```
 
 ## CLion 配置
 
-Settings → CMake → Profile 需清空 C/C++ Compiler 栏，在 CMake options 填：
+Settings → Build, Execution, Deployment → CMake → 对应的 Profile：
 
-```
--DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake
-```
+| 字段 | 值 |
+|------|-----|
+| CMake | `{STM32CubeCLT}\CMake\bin\cmake.exe` |
+| Build tool | `{STM32CubeCLT}\Ninja\bin\ninja.exe` |
+| C Compiler | `{STM32CubeCLT}\GNU-tools-for-STM32\bin\arm-none-eabi-gcc.exe` |
+| C++ Compiler | `{STM32CubeCLT}\GNU-tools-for-STM32\bin\arm-none-eabi-c++.exe` |
+| **CMake options** | `-DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake` |
+
+C/C++ Compiler 不能留空，必须指向 CubeCLT 的 arm-none-eabi-gcc/g++。`-mcpu=cortex-m3` 等架构标志由工具链文件注入。
