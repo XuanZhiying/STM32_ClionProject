@@ -100,8 +100,6 @@ int main(void)
   led_init();                                             /* 初始化LED */
   dht22_init();                                           /* 初始化DHT22 (PB11) */
 
-  HAL_DBGMCU_EnableDBGSleepMode();                        /* 保持 SWD 在线（FreeRTOS WFI 会睡眠） */
-
   printf("\r\n=== STM32F103 FreeRTOS + DHT22 Demo ===\r\n");
   printf("SystemCoreClock: %lu Hz\r\n", SystemCoreClock);
   /* USER CODE END 2 */
