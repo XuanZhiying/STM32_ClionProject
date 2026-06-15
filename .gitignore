@@ -1,0 +1,28 @@
+# Build outputs
+build/
+cmake-build-*/
+*.elf
+*.map
+*.hex
+*.bin
+*.o
+*.obj
+*.su
+*.d
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# OpenCode agent
+.omo/
+
+# OS
+Thumbs.db
+.DS_Store
+
+# CubeMX temp
+.mxproject/
