@@ -44,6 +44,12 @@ cmake --build build/Debug
 3. 旧 `Drivers/SYSTEM/usart/usart.c` 中的冲突函数已用 `#if 0` 屏蔽
 4. CLion profile: C/C++ Compiler 指向 STM32CubeCLT 的 arm-none-eabi-gcc/g++，CMake options 加 `-DCMAKE_TOOLCHAIN_FILE=cmake/gcc-arm-none-eabi.cmake`
 
+## 编码约定
+
+- **跨模块函数必须声明在头文件中**：一个 `.c` 中定义、其他 `.c` 中引用的函数，把函数原型写在对应头文件的 `/* USER CODE BEGIN EFP */` 区域（CubeMX 重生成时会保留），不要依赖 `.c` 内部的局部 `extern` 声明
+  - 例如：`LED_Task`/`DHT22_Task` 定义在 `main.c`，被 `freertos.c` 调用 → 原型写在 `main.h`
+  - CLion 导航依赖头文件声明，局部 `extern` 会导致无法跳转到定义
+
 ## FreeRTOS
 
 - CMSIS-RTOS v1 封装（CubeMX 生成）
