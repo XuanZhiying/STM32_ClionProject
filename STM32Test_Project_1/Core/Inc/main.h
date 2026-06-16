@@ -53,7 +53,8 @@ extern "C" {
 void Error_Handler(void);
 
 /* USER CODE BEGIN EFP */
-
+void LED_Task(void *pvParameters);
+void DHT22_Task(void *pvParameters);
 /* USER CODE END EFP */
 
 /* Private defines -----------------------------------------------------------*/

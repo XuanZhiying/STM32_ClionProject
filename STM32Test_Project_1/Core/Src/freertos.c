@@ -123,8 +123,6 @@ void MX_FREERTOS_Init(void) {
 
   /* USER CODE BEGIN RTOS_THREADS */
   /* 用户任务: 使用原生 FreeRTOS API */
-  extern void LED_Task(void *pvParameters);
-  extern void DHT22_Task(void *pvParameters);
   xTaskCreate(LED_Task,   "LED_Task",   128, NULL, 1, NULL);
   xTaskCreate(DHT22_Task, "DHT22_Task", 512, NULL, 2, NULL);
   /* USER CODE END RTOS_THREADS */
